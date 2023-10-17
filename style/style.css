@@ -25,6 +25,7 @@ body {
 .tabsLinks {
     display: flex;
     background: #191d22;
+    position: relative;
 }
 .tabsItem {
     flex-grow: 1;
@@ -258,6 +259,21 @@ body {
     cursor: pointer;
     outline: none;
 }
+.circle {
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+.circle__animation {
+    animation: opacity 2s linear infinite;
+
+}
+
 
 /* Добавляем keyframe на уроке*/
 

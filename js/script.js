@@ -2,8 +2,9 @@ let secondArrow = document.querySelector('.s'),
     minuteArrow = document.querySelector('.m'),
     hourArrow = document.querySelector('.h'),
     hourBox = document.querySelector('.hours'),
-    minuteBox = document.querySelector('.minutes');
-    stopWatchBtn = document.querySelector('.stopwatch__btn')
+    minuteBox = document.querySelector('.minutes'),
+    stopWatchBtn = document.querySelector('.stopwatch__btn'),
+    circle = document.querySelector('.circle')
     
   
 // new Date() - это глобальный встроенный объект (class) - который дает информацию о дате и времени
@@ -65,12 +66,15 @@ stopWatchhours = document.querySelector('.stopwatch__hours')
 
 stopWatchBtn.addEventListener('click', () => {
     if (stopWatchBtn.innerHTML == 'start') {
+        circle.style.display = 'flex'
+        circle.classList.add('circle__animation')
+
         stopWatchBtn.innerHTML = 'Stop'
         function seconds() {
-            if (stopWatchSeconds.innerHTML == '60') {
+            if (stopWatchSeconds.innerHTML == '59') {
                 stopWatchMinutes.innerHTML++
                 stopWatchSeconds.innerHTML = '0'
-            }else if (stopWatchMinutes.innerHTML == '60') {
+            }else if (stopWatchMinutes.innerHTML == '59' && stopWatchSeconds.innerHTML == '58') {
                 stopWatchhours.innerHTML++
                 stopWatchMinutes.innerHTML = '0'
                 stopWatchSeconds.innerHTML = '0'
@@ -83,8 +87,9 @@ stopWatchBtn.addEventListener('click', () => {
         setTimeout(seconds, 1000);
     }else if (stopWatchBtn.innerHTML == 'Stop') {
         stopWatchBtn.innerHTML = 'Clear'
-        
+        circle.classList.remove('circle__animation')
     }else {
+        circle.style.display = 'none'
         stopWatchBtn.innerHTML = 'start'
         stopWatchSeconds.innerHTML = '0'
         stopWatchMinutes.innerHTML = '0'
